@@ -34,7 +34,7 @@ case_c(Expr, branch(Pats, When, Ins), CTX, _Tape, NCTX, NTape) :-
     reverse(Pats, Pats1),
     as_c(Pats1, CTX, Expr, CTX1, Tape),
     (   When = []
-    ;   Empty @- !, eval_list(When, CTX, Empty, _CTX0, Tape0), lit(yes) @- @Tape0),
+    ;   Empty @- !, eval2_list(When, CTX1, CTX, Empty, _CTX0, Tape0), lit(yes) @- @Tape0),
     eval2_list(Ins, CTX1, CTX, Tape, NCTX, NTape).
 
 %unquote_c(unquote(Expr), Out, CTX) :- unquote_c(Expr, Out, CTX).

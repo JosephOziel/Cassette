@@ -6,9 +6,7 @@
 main([Command]) :-
     (   Command = "r"
     ;   Command = "repl"),
-    read(In),
-    atom_string(In, Code),
-    print_term(Code, []),
+    read_line_to_codes(user_input,Code),
     cassette_repl(Code).
 
 main([File]) :-
@@ -18,7 +16,7 @@ main([File]) :-
     string_codes(Text, Code), run(Code).
 
 cassette_repl(Input) :-
-    (   run2(Input)
-    ;   writeln("code failed.")),
-    main(["r"]).
+    (   run_no_main(Input), main(["r"])
+    ;   writeln("code failed."), main(["r"])
+    ).
 
