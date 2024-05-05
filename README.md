@@ -59,3 +59,14 @@ or as quotes
 5 6 swap ~>
 7 8 9 pop ~>
 ```
+
+# building
+
+Cassette can be built as a standalone executable using [SWI Prolog](https://www.swi-prolog.org).
+
+```shell
+$ cd cli
+$ swipl -o cassette -c main.pl --goal=main
+$ ./cassette ../examples/hello_world.cte
+"hello world"
+```
